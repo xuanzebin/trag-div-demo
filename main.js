@@ -8,7 +8,7 @@ box.addEventListener('mousedown',(e)=>{
     x=e.clientX
     y=e.clientY
 })
-box.addEventListener('mousemove',(e)=>{
+document.body.addEventListener('mousemove',(e)=>{
     if (mouseClick){
         let moveX=e.clientX-x
         let moveY=e.clientY-y
@@ -17,7 +17,7 @@ box.addEventListener('mousemove',(e)=>{
         box.style.transform=box.style.transform+`translate(${moveX}px,${moveY}px)`
         boxClient=box.getBoundingClientRect()
         stageClient=stage.getBoundingClientRect()
-        if (boxClient.left<stageClient.right && boxClient.top<stageClient.bottom){
+        if (boxClient.left<stageClient.right && boxClient.right>stageClient.left && boxClient.top<stageClient.bottom && boxClient.bottom>stageClient.top){
             stage.style.background='#ddd'
         } else {
             stage.style.background='transparent'
